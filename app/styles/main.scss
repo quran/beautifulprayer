@@ -1,0 +1,291 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400);
+
+body, h1, h2, h3, h4, h5, p{
+  font-family: 'Lato', sans-serif;
+}
+html,body{
+  height: 100%;
+  min-height: 100%;
+  background-color: black;
+}
+
+h1{
+
+  font-weight: 100;
+  color: #FFFFFF;
+  font-size: 1200%;
+  line-height: 100px;
+}
+
+h2{
+
+  font-weight: 400;
+  font-size: 250%;
+  color: #FFFFFF;
+
+}
+
+h3{
+
+  font-weight: 300;
+  color: #FFFFFF
+
+}
+
+h4{
+
+  font-weight: 100;
+  font-size: 250%;
+  color: #FFFFFF;
+
+}
+.beautifulprayer{
+  height: 100%;
+}
+
+$timing-transition: 0.25s;
+
+#next_prayer{
+  // min-height: 70%;
+  height: 70%;
+  padding: 75px;
+  background-size: cover;
+  background-position: center center;
+  transition: height $timing-transition;
+  -webkit-transition: height $timing-transition;
+  @media (max-width: 768px) {
+    height: 100%;
+  }
+
+
+  &:hover{
+    height: 90%;
+
+    #prayer_name{
+      padding-top: 5%;
+      @media (max-width: 768px) {
+        padding-top: 0px;
+      }
+    }
+
+    & ~ .prayers_lower{
+      height: 10%;
+      h4{
+        display: none;
+      }
+      .prayers_bottom{
+        padding: 1% 3% 5%;
+      }
+    }
+
+  }
+
+}
+
+#prayer_name{
+  transition: padding-top $timing-transition;
+  -webkit-transition: padding-top $timing-transition;
+}
+
+.prayers_lower{
+  // min-height: 30%;
+  transition: height $timing-transition;
+  -webkit-transition: height $timing-transition;
+  height: 30%;
+  h4{
+    transition: display $timing-transition;
+  -webkit-transition: display $timing-transition;
+  }
+
+}
+
+.prayers_bottom{
+  min-height: 100%;
+  height: 100%;
+  padding: 3%;
+  transition: padding $timing-transition;
+  -webkit-transition: padding $timing-transition;
+}
+.loading{
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  z-index: 99999;
+  // background-color: black;
+
+}
+.loading-show-hide {
+
+ background-color: rgba(0,0,0, 1);
+}
+
+.loading-show-hide {
+  -webkit-transition:all cubic-bezier(.87,.3,0,1) 0.5s;
+  transition:all cubic-bezier(.87,.3,0,1) 0.5s;
+  // -webkit-transition-delay: 0.5s; /* Safari */
+  // transition-delay: 0.5s;
+}
+
+.loading-show-hide.ng-hide {
+  opacity:0;
+}
+
+.fajr{
+  background: url("../images/fajr.jpg");
+  background-position: center center;
+  background-size: cover;
+
+
+}
+.sunrise{
+  background: url(../images/sunrise.jpg);
+  background-position: center center;
+  background-size: cover;
+}
+
+.dhuhr{
+  background: url("../images/dhuhr.jpg");
+  background-position: center center;
+  background-size: cover;
+
+}
+
+.asr{
+  background: url("../images/asr.jpg");
+  background-position: center center;
+  background-size: cover;
+
+}
+
+.maghrib{
+  background: url("../images/maghrib.jpg");
+  background-position: center center;
+  background-size: cover;
+
+}
+
+.isha{
+  background: url("../images/isha.jpg");
+  background-position: center center;
+  background-size: cover;
+
+}
+
+.locationdropdown{
+
+  -webkit-appearance: none;
+  width: 50%;
+
+  // text-indent: 20%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+  background: transparent;
+  -webkit-appearance: none;
+  border: none;
+  border-radius: 0px;
+  border-bottom: 2px solid rgba(255, 255, 255, 1);
+  // border-width: 2px;
+  // border-radius: 20px;
+  padding-top: 10px;
+  /*width: 150%;*/
+  color: #FFFFFF;
+  font-weight: 400;
+  margin-top: 30px;
+
+
+}
+
+
+.locationdropdown:hover{
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, .5);
+  // border-width: 2px;
+  // border-radius: 20px;
+
+
+  color: #FFFFFF;
+  font-weight: 400;
+  margin-top: 30px;
+
+}
+
+.bpnavbar{
+  background: rgba(255, 255, 255, .0);
+  border-color: none;
+
+}
+.modal-dialog{
+  padding-top: 70px;
+}
+.modal-content{
+  background-color: #3d3d3d;
+}
+
+
+.selectoption{
+  color: black;
+}
+
+#the_date{
+  color: white;
+  padding-left: 1%;
+  padding-right: 1%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+footer{
+    background-color: #34495e;
+    padding: 1% 0%;
+    position: absolute;
+    width: 100%;
+    color: white;
+}
+#region{
+  color: white;
+  -webkit-appearance: none;
+  border: 2px solid rgba(255, 255, 255, 1);
+  text-align: center;
+
+}
+#region::-webkit-input-placeholder {
+   color: white;
+}
+#region::-moz-placeholder {
+   color: white;
+}
+#region::-ms-placeholder {
+   color: white;
+}
+
+input[type="text"] {
+  border-color: #FFFFFF;
+}
+.bp-desc{
+  color:#343434;
+  font-size: 300%;
+}
+.progress{
+  background: transparent;
+  border-color: #FFFFFF;
+  border: 2px solid rgba(255, 255, 255, 1);
+}
+.progress-bar{
+  background-color: #FFF;
+}
+
+#prayer_time{
+  @media (max-width: 768px) {
+    font-size: 300%;
+  }
+
+}
+
+
