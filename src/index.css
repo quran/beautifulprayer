@@ -1,0 +1,125 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400);
+
+*{
+  box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, h5, p{
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+h1{
+  font-weight: 100;
+  color: #FFFFFF;
+  font-size: 12rem;
+  margin: 0px;
+}
+
+h2{
+  font-weight: 300;
+  font-size: 5rem;
+  color: #FFFFFF;
+}
+
+h3{
+  font-weight: 100;
+  font-size: 3rem;
+  color: #FFFFFF
+}
+
+h4{
+  font-weight: 300;
+  font-size: 2rem;
+  color: #FFFFFF;
+}
+
+@media(max-width: 700px){
+  html, body{
+    font-size: 12px;
+  }
+  h1{
+    font-size: 9rem;
+  }
+}
+
+.geosuggest {
+  font-size: 18px;
+  font-size: 1rem;
+  position: relative;
+  text-align: left;
+  flex: 1;
+}
+.geosuggest__input {
+  -webkit-appearance: none;
+  width: 100%;
+  padding: 10px 15px;
+  background: transparent;
+  border: none;
+  border-radius: 0px;
+  border: 2px solid rgba(255, 255, 255, 1);
+  border-width: 2px;
+  border-radius: 20px;
+  padding-top: 10px;
+  /*width: 150%;*/
+  color: #FFFFFF;
+  font-weight: 400;
+  -webkit-transition: border 0.5s, box-shadow 0.5s;
+          transition: border 0.5s, box-shadow 0.5s;
+}
+.geosuggest__input:focus {
+  outline: none;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.geosuggest__suggests {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 25em;
+  padding: 0;
+  margin-top: -1px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid #ffffff;
+  border-top-width: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  list-style: none;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  z-index: 5;
+  /*-webkit-transition: max-height 0.2s, border 0.2s;
+          transition: max-height 0.2s, border 0.2s;*/
+}
+
+.geosuggest__suggests--hidden {
+  max-height: 0;
+  overflow: hidden;
+  border-width: 0;
+}
+
+/**
+ * A geosuggest item
+ */
+.geosuggest__item {
+  font-size: 18px;
+  font-size: 1rem;
+  padding: .5em .65em;
+  font-weight: 400;
+  cursor: pointer;
+  color: #333;
+}
+.geosuggest__item:hover,
+.geosuggest__item:focus {
+}
+.geosuggest__item--active {
+  background: #267dc0;
+  color: #fff;
+}
+.geosuggest__item--active:hover,
+.geosuggest__item--active:focus {
+  background: #ccc;
+}

@@ -1,0 +1,15 @@
+.location-dropdown{
+  -webkit-appearance: none;
+  padding: 10px 15px;
+  background: transparent;
+  border: none;
+  border-radius: 0px;
+  border: 2px solid rgba(255, 255, 255, 1);
+  border-width: 2px;
+  border-radius: 20px;
+  padding-top: 10px;
+  /*width: 150%;*/
+  color: #FFFFFF;
+  font-weight: 400;
+  flex: 1;
+}
