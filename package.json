@@ -6,7 +6,7 @@
     "react-scripts": "0.8.5"
   },
   "dependencies": {
-    "prayer-times": "^0.1.0",
+    "adhan": "^2.0.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-geosuggest": "^2.1.0",
