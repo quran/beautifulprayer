@@ -7,10 +7,13 @@
   },
   "dependencies": {
     "adhan": "^2.0.0",
+    "query-string": "^4.3.1",
     "react": "^15.4.2",
     "react-cookie": "^1.0.4",
     "react-dom": "^15.4.2",
     "react-geosuggest": "^2.1.0",
+    "react-router": "next",
+    "react-router-dom": "next",
     "whatwg-fetch": "^2.0.2"
   },
   "scripts": {

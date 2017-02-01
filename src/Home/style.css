@@ -16,7 +16,7 @@
 
 .prayer-block{
   flex: 1;
-  height: 35vh;
+  height: 30vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
