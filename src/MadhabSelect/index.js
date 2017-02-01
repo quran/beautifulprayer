@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import adhan from 'adhan';
 
-const AsrSelect = ({ onChange }) => (
-  <select onChange={onChange} className="location-dropdown" id="prayerMethod">
+const MadhabSelect = ({ onChange, value }) => (
+  <select value={value} onChange={onChange} className="location-dropdown" id="prayerMethod">
     {
       Object.keys(adhan.Madhab).map(method => (
         <option key={method} value={method}>{method}</option>
@@ -11,4 +11,9 @@ const AsrSelect = ({ onChange }) => (
   </select>
 );
 
-export default AsrSelect;
+MadhabSelect.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired
+};
+
+export default MadhabSelect;

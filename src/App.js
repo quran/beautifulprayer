@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import adhan from 'adhan';
+import cookie from 'react-cookie';
+
 import TopPanel from './TopPanel';
 import PrayerBlock from './PrayerBlock';
 import Loader from './Loader';
@@ -10,8 +12,8 @@ import './App.css';
 
 class App extends Component {
   state = {
-    method: 'MuslimWorldLeague',
-    madhab: 'Shafi'
+    method: cookie.load('method') || 'MuslimWorldLeague',
+    madhab: cookie.load('madhab') || 'Shafi'
   };
 
   componentWillMount() {
@@ -50,22 +52,22 @@ class App extends Component {
 
   getNextPrayer() {
     const nextPrayerIndex = this.getPrayerTimes().nextPrayer();
-    console.log(nextPrayerIndex);
     const prayerName = this.getTimesList()[nextPrayerIndex].toLowerCase();
 
     return { name: prayerName, time: this.getPrayerTimes()[prayerName] };
   }
 
   handleMadhabChange = (event) => {
+    cookie.save('madhab', event.target.value);
     this.setState({ madhab: event.target.value });
   }
 
   handleMethodChange = (event) => {
+    cookie.save('method', event.target.value);
     this.setState({ method: event.target.value });
   }
 
   handleLocationChange = ({ location, gmaps }) => {
-    console.log(gmaps);
     this.setState({
       coordinates: new adhan.Coordinates(location.lat, location.lng)
     });
@@ -81,6 +83,8 @@ class App extends Component {
     return (
       <div className="App">
         <TopPanel
+          method={this.state.method}
+          madhab={this.state.madhab}
           nextPrayer={{ name: this.getNextPrayer().name, time: adhan.Date.formattedTime(this.getNextPrayer().time, offset) }}
           onMethodChange={this.handleMethodChange}
           onMadhabChange={this.handleMadhabChange}

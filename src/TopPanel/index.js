@@ -6,7 +6,7 @@ import MadhabSelect from '../MadhabSelect';
 
 require('./style.css');
 
-const TopPanel = ({ nextPrayer, onMethodChange, onMadhabChange, onLocationChange }) => {
+const TopPanel = ({ method, madhab, nextPrayer, onMethodChange, onMadhabChange, onLocationChange }) => {
   return (
     <div className="top-panel" style={{ backgroundImage: `url(/images/${nextPrayer.name}.jpg)`}}>
       <h2 className="text-capitalize">{nextPrayer.name}</h2>
@@ -16,14 +16,16 @@ const TopPanel = ({ nextPrayer, onMethodChange, onMadhabChange, onLocationChange
           types={['(cities)']}
           onSuggestSelect={onLocationChange}
         />
-        <MethodSelect onChange={onMethodChange} />
-        <MadhabSelect onChange={onMadhabChange} />
+        <MethodSelect value={method} onChange={onMethodChange} />
+        <MadhabSelect value={madhab} onChange={onMadhabChange} />
       </div>
     </div>
   );
 };
 
 TopPanel.propTypes = {
+  method: PropTypes.string.isRequired,
+  madhab: PropTypes.string.isRequired,
   onLocationChange: PropTypes.func,
   onMethodChange: PropTypes.func,
   nextPrayer: PropTypes.shape({

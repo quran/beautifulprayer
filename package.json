@@ -8,6 +8,7 @@
   "dependencies": {
     "adhan": "^2.0.0",
     "react": "^15.4.2",
+    "react-cookie": "^1.0.4",
     "react-dom": "^15.4.2",
     "react-geosuggest": "^2.1.0",
     "whatwg-fetch": "^2.0.2"
