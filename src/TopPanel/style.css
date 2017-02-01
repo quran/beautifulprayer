@@ -4,7 +4,9 @@
   background-position: center center;
   background-repeat: no-repeat;
   color: #fff;
-  padding-top: 15vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
 }
 
 .top-panel-options{
@@ -14,4 +16,12 @@
   align-items: center;
   justify-content: space-around;
   padding-top: 15px;
+}
+
+@media(max-width: 700px){
+  .top-panel-options{
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: stretch;
+  }
 }

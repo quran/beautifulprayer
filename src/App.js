@@ -10,7 +10,8 @@ import './App.css';
 
 class App extends Component {
   state = {
-    method: 'MuslimWorldLeague'
+    method: 'MuslimWorldLeague',
+    madhab: 'Shafi'
   };
 
   componentWillMount() {
@@ -21,11 +22,24 @@ class App extends Component {
 
   getPrayerTimes() {
     const date = new Date();
-    const times = new adhan.PrayerTimes(
+    const params = adhan.CalculationMethod[this.state.method]();
+    params.madhab = adhan.Madhab[this.state.madhab];
+
+    let times = new adhan.PrayerTimes(
       this.state.coordinates,
       date,
-      adhan.CalculationMethod[this.state.method]()
+      params
     );
+
+    if (times.nextPrayer() === 6) {
+      date.setDate(date.getDate() + 1);
+
+      times = new adhan.PrayerTimes(
+        this.state.coordinates,
+        date,
+        params
+      );
+    }
 
     return times;
   }
@@ -36,13 +50,25 @@ class App extends Component {
 
   getNextPrayer() {
     const nextPrayerIndex = this.getPrayerTimes().nextPrayer();
+    console.log(nextPrayerIndex);
     const prayerName = this.getTimesList()[nextPrayerIndex].toLowerCase();
 
     return { name: prayerName, time: this.getPrayerTimes()[prayerName] };
   }
 
+  handleMadhabChange = (event) => {
+    this.setState({ madhab: event.target.value });
+  }
+
   handleMethodChange = (event) => {
     this.setState({ method: event.target.value });
+  }
+
+  handleLocationChange = ({ location, gmaps }) => {
+    console.log(gmaps);
+    this.setState({
+      coordinates: new adhan.Coordinates(location.lat, location.lng)
+    });
   }
 
   render() {
@@ -57,6 +83,8 @@ class App extends Component {
         <TopPanel
           nextPrayer={{ name: this.getNextPrayer().name, time: adhan.Date.formattedTime(this.getNextPrayer().time, offset) }}
           onMethodChange={this.handleMethodChange}
+          onMadhabChange={this.handleMadhabChange}
+          onLocationChange={this.handleLocationChange}
         />
         <div className="prayer-blocks">
           {
