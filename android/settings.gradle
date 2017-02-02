@@ -1,0 +1,3 @@
+rootProject.name = 'beautifulprayer'
+
+include ':app'
