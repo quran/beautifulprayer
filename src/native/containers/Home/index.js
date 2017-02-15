@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Dimensions, ScrollView, StatusBar, View, Image, Text, StyleSheet } from 'react-native';
+import { TouchableHighlight, Modal, Dimensions, ScrollView, StatusBar, View, Image, Text, StyleSheet } from 'react-native';
 import moment from 'moment';
 
 import { getPrayerTimes, getNextPrayer, getTimesList, loadLocation } from '../../../redux/prayerTimes';
 import Block from '../../components/Block';
+import SettingsModal from '../../components/SettingsModal';
 import adhan from '../../../utils/Adhan';
 
 const { height, width } = Dimensions.get('window');
@@ -20,12 +21,18 @@ const backgroundImages = {
 
 class Home extends Component {
   state = {
-    currentTime: this.getTime()
+    currentTime: this.getTime(),
+    settingsModalOpen: false
   }
 
   componentWillMount() {
-    StatusBar.setHidden(true);
     return this.props.loadLocation();
+  }
+
+  componentDidUpdate() {
+    if (!this.state.settingsModalOpen) {
+      StatusBar.setHidden(true);
+    }
   }
 
   componentDidMount() {
@@ -55,10 +62,11 @@ class Home extends Component {
 
     return (
       <View>
+        <SettingsModal visible={this.state.settingsModalOpen} onClose={() => this.setState({ settingsModalOpen: false })} />
         <ScrollView>
-          <Image source={backgroundImages.fajr} style={styles.backgroundImage}>
+          <Image source={backgroundImages[this.props.nextPrayer.name.toLowerCase()]} style={styles.backgroundImage}>
             <View style={styles.details}>
-              <Text style={styles.location}>
+              <Text onPress={() => this.setState({ settingsModalOpen: true })} style={styles.location}>
                 Toronto
               </Text>
               <Text style={styles.dateTime}>

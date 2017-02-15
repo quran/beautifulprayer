@@ -1,6 +1,8 @@
 import adhan from '../utils/Adhan';
 
 const LOAD_SUCCESS_LOCATION = 'location/LOAD_SUCCESS_LOCATION';
+const SET_METHOD = 'location/SET_METHOD';
+const SET_MADHAB = 'location/SET_MADHAB';
 
 const initialState = {
   lat: null,
@@ -19,6 +21,18 @@ export default (state = initialState, action = {}) => {
         lat: action.location.lat,
         lng: action.location.lng,
         coordinates: new adhan.Coordinates(action.location.lat, action.location.lng)
+      };
+    }
+    case SET_METHOD: {
+      return {
+        ...state,
+        method: action.method
+      };
+    }
+    case SET_MADHAB: {
+      return {
+        ...state,
+        method: action.madhab
       };
     }
     default:
@@ -67,3 +81,6 @@ export const getNextPrayer = (globalState) => {
 
   return { name: prayerName, time: getPrayerTimes(globalState)[prayerName.toLowerCase()] };
 }
+
+export const setMethod = (method) => ({ method, type: SET_METHOD });
+export const setMadhab = (method) => ({ madhab, type: SET_MADHAB });
